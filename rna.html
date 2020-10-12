@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRUS</title>
+</head>
+<style>
+    html{overflow-x: hidden;width: 100%; height: 650vh;
+   }
+   body{padding-left: 70px;
+    background-color: black;
+
+color: white;}
+   p{font-size: 18px;
+    line-height: 1.7;}
+
+    .container01{
+        height: 1400px;
+        display: flex;}
+    
+    .item01{width: 1300px;
+    line-height: 1.5;}
+    .item01 h1{font-size: 200px;}
+    .text01{height: 100px; font-size: 100px;}
+    .text02{height: 100px;}
+
+    .container02{
+        height: 800px;
+        display: flex;
+    }
+    .item0201{height: 200px;;}
+    .container03{
+        height: 1500px;
+        display: flex;}
+    .container04{height: 1300px;
+        display: flex; 
+    flex-direction: row; justify-content: space-evenly;padding-left: 10%;}
+    .itme4{width: 48%;}
+
+    .container06{height: 500px;
+        display: flex; 
+    flex-direction: row; justify-content: flex-start;margin-right: 2%;}
+    .container06 h1{font-size: 100px;}
+    
+    .console-container{font-size: 8rem; font-weight: bold;}
+
+</style>
+
+<body style="position: relative;">
+    <canvas id='cvs' style="position: absolute; z-index: -999; width: full;" ></canvas>
+
+<script>
+// Get canvas
+var cvs = document.getElementById('cvs');
+
+// Canvas fills window
+cvs.height = window.innerHeight;
+cvs.width = window.innerWidth;
+
+// Get canvas context
+var ctx = cvs.getContext('2d');
+
+// Set font, size & number of columns
+var font = 'arial';
+var fontSize = 10;
+ctx.font = fontSize + 'px ' + font;
+var cols = cvs.width / fontSize;
+
+// Characters
+var charSet;
+charSet = '0123456789ABCDEF'; // Hex
+charSet = charSet.split(''); // Convert string to array
+
+// One drop per column, row set randomly
+var drops = [];
+for (var col = 0; col < cols; col++)
+  drops[col] = Math.floor(Math.random() * cvs.height);
+
+// Call rain() every 25ms
+setInterval(rain, 25);
+
+function rain() {
+  // Background, black, translucent
+  /* This is key to the fade effect, clear the window with an alpha of 0.05, which doesn't clear it entirely but leaves existing text progressively dimmed with each subsequent call to rain()
+   */
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillRect(0, 0, cvs.width, cvs.height);
+  
+  // For each column / drop
+  for (var col = 0; col < drops.length; col++) {
+    // Pick a random char
+    var char = charSet[Math.floor(Math.random() * charSet.length)];
+    // Pick a random colour
+    ctx.fillStyle = randColour();
+    // Draw the char
+    ctx.fillText(char, col * fontSize, drops[col] * fontSize);
+    // Randomly reset drop back to top row
+    if (Math.random() > 0.99)
+      drops[col] = 0;
+
+    drops[col]++; // Move drop down a row
+  }
+}
+
+function randColour()
+{
+  return'rgb(' + 
+    Math.floor(Math.random() * 255) + ',' + 
+    Math.floor(Math.random() * 0) + ',' + 
+    Math.floor(Math.random() * 100) + ')';
+}
+</script>
+
+    <section class="container01" style="background: url('back.mp4');">
+        <div class="item01">
+            <h1>VIRUS</h1>
+            <p>바이러스는 스스로 번식을 하지 못하는 분자 덩어리일 뿐, 유기체의 살아있는 세포를 통해서만 생명활동을 하는 존재이다.<br> 
+                평상시에는 거의 돌덩어리와 같은 상태로 비활성화 되어있다가 숙주의 세포에 기생하기 시작해야 비로소 생명체로서의 활동을 하는게 특징으로<br>
+                이에 따라 생물과 무생물의 중간적 존재로 본다. 생물과 무생물의 경계에 모호하게 걸쳐서 바이러스의 생물적 특징으로는 활물기생, <br>
+                자기복제, 돌연변이 등을 들 수 있겠고, 비생물적 특징으로는 조절 물질(효소)이 없다는 점, 공기에 노출되면 단백질 결정으로 추출이 가능한 점, 세포 구조물이 없다는 점,
+                숙주에 기생하지 않을 경우 스스로 번식을 하지 못하는 점 등을 들 수 있다.
+                <br>
+                <br>
+                따라서 바이러스를 생명체로 볼 것인가 무생물체로 볼 것인가에 대한 논쟁이 지속되고 있다. 최근에는 두 가지 가능성을 절충하여 <br>
+                ‘조건부 생명체(conditionally alive)’라는 새로운 용어가 제시되었다. 바이러스는 숙주에 감염하여야만 증식과 진화와 같은 생명체로서의 특징을 나타낼 수 있는데, <br>
+                자외선을 조사함으로써 바이러스가 감염 하지 못하든지 감염하여도 증식하지 못하도록 할 수 있다. <br>
+                즉, 바이러스를 ‘죽일 수 있다(can be killed)’는 것이다. 죽일 수 있다면 ‘살아 있어야 한다(alive)’ 는것이고, 숙주에 감염해야만 생명체의 특징을 나타내므로 
+                <Br>
+                <Br>
+                    <br>
+                <strong style="font-size: 30px;">바이러스는 ‘조건부(conditional)’ 생명체라는 것이다.</strong>
+                
+                </p>
+            </div>
+           
+    </section>
+
+    <section class="container02">
+
+        <div style="width: 500px; height: 500px; background-color: yellow; margin: 10px 20px;">
+        <img src=""></div>
+        <div class="item0201" style="margin-top: 20px;">
+            <p>세균의 1/50~1/100 크기<br>
+                바이러스 유전물질인 핵산(DNA 또는 RNA)과 단백질로 구성<br>
+                    +(개중에는 단백질 껍질 바깥에 추가적으로 지질 외막-Lipid envelope-을 갖는 녀석들도 많다)<br>
+                숙주 없이는 증식이 불가 무조건 숙주가 필요(인간 또는 동물)
+            </p><br>
+            <p>
+                바이러스는 세균과는 엄연히 다른 존재다. 바이러스는 세균보다도 수백배 이상 작아서 거름종이도 통과할 정도이다. <br>
+                일종의 단세포 생물로 기능하는 세균에 비해 바이러스의 구조는 세포 단위도 되자않을 정도로 훨씬 간단하며, <br>
+                단백질 캡슐과 유전 물질밖에 없다.<br><Br>
+                
+                활물 밖에서는 평범한 무생물처럼 보이지만 바이러스 최고의 무기는 자가복제다. 바이러스가 활물세포에 기생하면서 <br>
+                그 세포의 거의 모든 통제권한을 자기가 쥐락펴락하며, 한번 복제되기 시작하면 경이로운 수준까지 순식간에 복제된다.
+                
+                </p>
+                <button >잡지식보러가기</button>
+        </div>
+    </section>
+    <section class="container03">
+        <div style="font-size: 80px; font-weight: bold; width: 500px; margin-top: 10px;">바이러스의 진단과 치료</div>
+        <div style="width: 1100px; align-items: flex-end;margin-top: 200px;">
+            <p>바이러스는 세균이나 진균 등의 병원성 미생물과 달리 세포가 없다. 때문에 항진균제나 항생제가 전혀 소용 없다. <br>
+                한국에서는 전통적으로 감기같은 바이러스성 질환에 항생제가 남용되고 있어 세계적으로 유명한데,
+                “예방적” 항생제 사용은 아무런 의미가 없는 것으로 몇 번이나 증명되었으며 근절해야 할 악습이다.<br><br>
+                
+                대부분의 바이러스성 질환은 약으로 치료하지 않으며, 수분 공급, 소염제, 해열제 등으로 *대증 요법*을 해주면서 인체의 면역계가 자체적으로 바이러스를 제거하는 것을 기다린다. 이것이 거의 모든 감기, 바이러스성 장염 등의 “치료”법이다. 그러나 바이러스성 질환에는 이처럼 자가제한적 경과를 보이는 것만 있는 것이 아니며, 방치하면 생명을 위협하는 무서운 바이러스성 질환도 많다. 이런 경우 백신을 개발해 예방하거나, 항바이러스제를 이용해 치료해야 한다.<br><br>
+                
+                항바이러스제는 대개 비싸고 부작용도 많기 때문에, 백신을 개발해 예방할 수 있다면 최고다. 하지만 바이러스 중에는 백신을 만들기 <br>
+                매우 어려운 특성을 가진 것들도 있고, 항원성이 자꾸 변이하기 때문에 만들어둔 백신이 효과가 없는 경우도 종종 있다. 
+                또한 백신의 개발은 아무리 서두르더라도 수 개월이 소요되며(임상시험 및 허가에 소요되는 시간까지 합하면 아무리 
+                서둘러도 1년 이상), 이럴 경우 어쩔 수 없이 항바이러스제를 써야 한다.<br>
+                
+                항바이러스제는 항생제와 달리 특정 바이러스를 잡기 위해 개발된 것들이 대부분이다. (반면 항생제는 공통적인 특징을 갖는 
+                여러 세균들에게 두루 유효하다). 때문에 항바이러스제가 개발되어있는 바이러스들은 인류에게 널리 해를 끼치는 거물급들이 많다. <br>
+                독감의 치료제로 개발된 아만타딘과 리만티딘, 헤르페스 감염 치료용이며 최초의 항바이러스제 중 하나인 아시클로버, HIV 치료용으로<br> 
+                개발된 지도부딘과 라미부딘 등이 그 예다. 간혹 여러 종류의 바이러스에 효과가 있는 항바이러스제도<br> 
+                있지만(플레코나릴 등) 자주 사용되지는 않는다.<br>
+                <br>
+                바이러스성 질환의 진단<br>
+                세균이나 진균은 인체가 감염에 대항해 만들어내는 물질이나 증가하는 혈중 면역세포 등으로 감염 여부를 꽤 정확히 알 수 있고, <br>
+                심지어 검체 배양을 통해 동정(원인 병원체를 확인)하는 것도 가능하다. 반면 바이러스는 감염 시 인체가 나타내는 증상과 징후가 특정적이지 않은 경우가 많으며, 대개 일반적인 증상 및 징후(예를 들어 발열, 오한, 복통, 기침 등)를 바탕으로 현재 유행 중인 바이러스 감염을 추측해 대증 치료(증상만 완화시키고 병원체를 직접 치료하지 않음)하는 것이 일반적이다.
+                <br><br>
+                그러나 SARS, HIV, 에볼라, COVID-19처럼 사회적으로 큰 문제를 일으키는 바이러스성 질환의 경우 증상이나 징후가 있는 사람이 해당 바이러스에 감염되었는지 정확히 알아낼 방법이 필요하며, 이를 위해 검체에서 바이러스를 검출할 방법이 필요하다.<br><br> 
+                
+                일반인에게도 친숙한 간염 검사는 각종 간염 바이러스의 항원과 항체를 검사하는 방법으로, 간염 환자로 판명될 경우 현재 감염력이 있는 활동성 감염인지 여부를 알아보기 위해 바이러스의 유전물질(RNA와 DNA 중 하나. 간염의 경우 DNA)을 검사하기도 한다.</p>
+        </div>
+    </section>
+    <section class="container04"> 
+        
+        <div class="item4" style="width: 48%;">
+
+        <div  style="font-size: 80px; font-weight: bold;">DNA VIRUS</div>
+        <div style="width: 400px; height: 500px; background-color: yellow;"></div>
+        <div  style="width: 400px;"><p>DNA이중가닥+외가닥 바이러스. DNA를 유전체로 쓰는 까닭에 
+            변이율이 낮아서 항체를 만들기 쉽다. 단, DNA바이러스가 증식하려면, 
+            숙주세포가 같이 분열하여야 숙주의 복제 메커니즘을 이용할 수 있으므로 
+            필연적으로 세포분열을 유도한다.</p></div></div>
+       
+       
+         <div class="item5" style="width: 48%;">
+
+        <div  style="font-size: 80px; font-weight: bold">DNA VIRUS</div>
+        <div style="width: 400px; height: 500px; background-color: yellow;"></div>
+        <div style="width: 400px  "><p>RNA 이중가닥·외가닥 Sense와 anti-sense 가닥 바이러스. 
+            숙주의 *DNA 복제 교정 기능*을 쓰지 않을 뿐더러 숙주 세포에 감염되어 증식한 뒤 
+            깨고 나오는 게 아니라, 숙주 세포의 핵 안에 자신의 유전정보를 복제하며 급속히
+            증식하기 때문에 변이율이 굉장히 높다. 
+            문제는 치명적인 바이러스가 나타났을 때 항체를 만들어도 높은 변이율로 인해 
+            백신을 만드는데 오래걸리기도 하고 오래걸려 만들어놨어도 금새 변이된 
+            또 다른 바이러스가 나타나서 문제가 생긴다.
+            
+            HIV, B형 간염 바이러스가 대표적이다. HIV가 림프구[를 감염시키면 세포가 
+            죽지 않을 만큼만 증식하다가 면역체계가 활성화되면 폭발적으로 증식하여 
+            면역체계를 무너뜨린다.
+            </p></div></div>>
+    </section>
+
+    <section class="container06">
+        <div style="width: 700px; height: 700px; background-color: yellow; margin-right: 30px;" ></div>
+        <div style="width: 800px;;">
+            <div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>_</div></div>
+<p>
+            우리 몸속의 세포들은 두 층의 인지질로 이루어진 지질 이중층 구조로 이루어져 있다. 
+쉽게 말하자면, 세포가 지질층으로 이루어진 막으로 둘러싸여 있는 것이다. 
+지질층은 매우 빼곡한 상태로 존재하기 때문에, 바이러스처럼 상대적으로 크기가 
+큰 물질들은 세포막을 쉽게 통과하지 못한다. 우리 몸속의 세포들은 세포막 표면에 
+여러가지 수용체를 가지고 있다. 이 수용체들은 외부로부터의 자극을 수용고, 
+세포가 적절한 반응을 하도록 유도하는 역할을 한다.
+바이러스는 바로 이 세포막 수용체를 이용하여 세포 안으로 침투한다. 
+그들은 수용체(ACE2)에 특이적으로 결합할 수 있는 세포막 
+단백질(corona의 spike단백질)을 가지고 있다. 
+바이러스의 세포막 단백질이 숙주 세포의 수용체에 결합하게 되면, 세포는 외부로의 
+신호에 반응하여, 세포막이 열리게 된다. 이렇게 열린 세포막을 통하여, 바이러스의 
+세포막과 세포의 세포막이 결합하게 되고, 최종적으로 바이러스의 세포 안으로의 
+유입이 가능하게 된다
+        </p></div>
+    </section>
+    
+    <script type="text/javascript">
+		// function([string1, string2],target id,[color1,color2])    
+		 consoleText(['RNA가 증식하는 방법'], 'text',['red','yellow','orange']);
+		
+		function consoleText(words, id, colors) {
+		  if (colors === undefined) colors = ['#fff'];
+		  var visible = true;
+		  var con = document.getElementById('console');
+		  var letterCount = 1;
+		  var x = 1;
+		  var waiting = false;
+		  var target = document.getElementById(id)
+		  target.setAttribute('style', 'color:' + colors[0])
+		  window.setInterval(function() {
+		
+			if (letterCount === 0 && waiting === false) {
+			  waiting = true;
+			  target.innerHTML = words[0].substring(0, letterCount)
+			  window.setTimeout(function() {
+				var usedColor = colors.shift();
+				colors.push(usedColor);
+				var usedWord = words.shift();
+				words.push(usedWord);
+				x = 1;
+				target.setAttribute('style', 'color:' + colors[0])
+				letterCount += x;
+				waiting = false;
+			  }, 1000)
+			} else if (letterCount === words[0].length + 1 && waiting === false) {
+			  waiting = true;
+			  window.setTimeout(function() {
+				x = -1;
+				letterCount += x;
+				waiting = false;
+			  }, 1000)  //문장 체인지 속도
+			} else if (waiting === false) {
+			  target.innerHTML = words[0].substring(0, letterCount)
+			  letterCount += x;
+			}
+		  }, 120) //타이핑속도
+		  window.setInterval(function() {
+			if (visible === true) {
+			  con.className = 'console-underscore hidden'
+			  visible = false;
+		
+			} else {
+			  con.className = 'console-underscore'
+		
+			  visible = true;
+			}
+		  }, 400)
+		}
+		</script>
+
+    
+</body>
+</html>
+
